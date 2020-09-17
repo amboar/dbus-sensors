@@ -124,19 +124,6 @@ if (NOT YOCTO)
         find_package (GTest CONFIG REQUIRED)
 
         enable_testing ()
-
-        add_executable (runTachTests tests/test_TachSensor.cpp ${FAN_SRC_FILES})
-        add_test (NAME test_fansensor COMMAND runTachTests)
-        target_link_libraries (runTachTests GTest::main GTest::gtest pthread
-                               ${DBUS_LIBRARIES} stdc++fs)
-        add_dependencies (runTachTests nlohmann-json)
-
-        add_executable (runHwmonTempTests tests/test_HwmonTempSensor.cpp
-                        ${HWMON_TEMP_SRC_FILES})
-        add_test (NAME test_hwmontempsensor COMMAND runHwmonTempTests)
-        target_link_libraries (runHwmonTempTests GTest::main GTest::gtest
-                               pthread ${DBUS_LIBRARIES} stdc++fs)
-        add_dependencies (runHwmonTempTests nlohmann-json)
     endif ()
 
 endif ()
