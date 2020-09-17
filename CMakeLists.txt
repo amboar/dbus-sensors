@@ -81,9 +81,6 @@ set (EXTERNAL_PACKAGES Boost sdbusplus-project nlohmann-json)
 set (SENSOR_LINK_LIBS -lsystemd stdc++fs sdbusplus)
 
 if (NOT YOCTO)
-    set (DISABLE_NVME ON) # todo allow this to build out of tree
-    option (ENABLE_TEST "Enable Google Test" OFF)
-
     externalproject_add (
         Boost URL
         https://dl.bintray.com/boostorg/release/1.66.0/source/boost_1_66_0.tar.gz
