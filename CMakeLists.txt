@@ -45,7 +45,7 @@ option (DISABLE_INTRUSION "Disable installing intrusion sensor" OFF)
 option (DISABLE_IPMB "Disable installing IPMB sensor" OFF)
 option (DISABLE_MCUTEMP "Disable installing MCU temperature sensor" OFF)
 option (DISABLE_PSU "Disable installing PSU sensor" OFF)
-option (DISABLE_NVME "Disable installing NVME sensor" ON)
+option (DISABLE_NVME "Disable installing NVME sensor" OFF)
 
 include ("cmake/HunterGate.cmake")
 
