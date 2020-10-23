@@ -1,0 +1,43 @@
+@startuml
+package "sensor" {
+class Sensor
+}
+
+package "NVMeSensorMain" {
+object nvmeDeviceMap
+}
+
+package "NVMeSensor" {
+
+class NVMeSensor
+
+class NVMeContext {
+int rootBus
+std::list<NVMeSensor> sensors
+}
+
+class NVMeMCTPContext {
+deadline_timer mctpResponseTimer
+int nvmeSlaveSocket
+}
+
+class NVMeSMBusContext {
+int busfd
+}
+
+class NVMEMap {
+.. Key ..
+Root Bus
+.. Value ..
+NVMeContext
+}
+
+NVMEMap --o "*" NVMeContext
+NVMeMCTPContext --|> NVMeContext
+NVMeSMBusContext --|> NVMeContext
+NVMeContext --o "*" NVMeSensor
+NVMeSensor --|> Sensor
+}
+
+nvmeDeviceMap --* NVMEMap
+@enduml
